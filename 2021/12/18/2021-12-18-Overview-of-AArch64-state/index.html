@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>AArch64状态概述 | XiaoEr</title><meta name="keywords" content="AArch64"><meta name="author" content="XiaoEr"><meta name="copyright" content="XiaoEr"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="AArch64状态下寄存器ARM处理器提供了通用寄存器和专用寄存器两类。在特权执行模式下还有一些额外的寄存器可以使用。 在AArch64状态下，可以使用如下寄存器：  31的64-bit通用寄存器X0-X30, 且对应的低32-bit部分可以通过W0-W30进行访问。 4个栈指针寄存器 SP_EL0, SP_EL1, SP_EL2, SP_EL3 3个异常链接寄存器 ELR_EL1, ELR_EL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AArch64状态概述">
+<meta property="og:url" content="http://example.com/2021/12/18/2021-12-18-Overview-of-AArch64-state/index.html">
+<meta property="og:site_name" content="XiaoEr">
+<meta property="og:description" content="AArch64状态下寄存器ARM处理器提供了通用寄存器和专用寄存器两类。在特权执行模式下还有一些额外的寄存器可以使用。 在AArch64状态下，可以使用如下寄存器：  31的64-bit通用寄存器X0-X30, 且对应的低32-bit部分可以通过W0-W30进行访问。 4个栈指针寄存器 SP_EL0, SP_EL1, SP_EL2, SP_EL3 3个异常链接寄存器 ELR_EL1, ELR_EL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-12-18T10:16:10.000Z">
+<meta property="article:modified_time" content="2022-02-18T14:09:03.383Z">
+<meta property="article:author" content="XiaoEr">
+<meta property="article:tag" content="AArch64">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/12/18/2021-12-18-Overview-of-AArch64-state/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AArch64状态概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-18 22:09:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XiaoEr</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">AArch64状态概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-18T10:16:10.000Z" title="发表于 2021-12-18 18:16:10">2021-12-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-18T14:09:03.383Z" title="更新于 2022-02-18 22:09:03">2022-02-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ARM/">ARM</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AArch64/">AArch64</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AArch64状态概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="AArch64状态下寄存器"><a href="#AArch64状态下寄存器" class="headerlink" title="AArch64状态下寄存器"></a>AArch64状态下寄存器</h2><p>ARM处理器提供了通用寄存器和专用寄存器两类。在特权执行模式下还有一些额外的寄存器可以使用。</p>
+<p>在AArch64状态下，可以使用如下寄存器：</p>
+<ul>
+<li>31的64-bit通用寄存器<strong>X0-X30</strong>, 且对应的低32-bit部分可以通过<strong>W0-W30</strong>进行访问。</li>
+<li>4个栈指针寄存器 <strong>SP_EL0</strong>, <strong>SP_EL1</strong>, <strong>SP_EL2</strong>, <strong>SP_EL3</strong></li>
+<li>3个异常链接寄存器 <strong>ELR_EL1</strong>, <strong>ELR_EL2</strong>, <strong>ELR_EL3</strong></li>
+<li>3个保存程序状态寄存器 <strong>SPSR_EL1</strong>, <strong>SPSR_EL2</strong>, <strong>SPSR_EL3</strong></li>
+<li>1个程序计数器</li>
+</ul>
+<span id="more"></span>
+
+<p>除了<strong>SPSR_EL1</strong>, <strong>SPSR_EL2</strong>, <strong>SPSR_EL3</strong>是32-bit位宽以外，所有其他寄存器都是64-bit位宽。</p>
+<p>大多数64整数指令可以在32-bit或者64-bit寄存器上操作。寄存器位宽由寄存器标识符确定， 其中<br>W表示32-bit， X表示64-bit。寄存器名称<strong>Wn</strong>和<strong>Xn</strong>（其中n的范围是$0-30$）指向的是相同的寄存器。当使用指令的32-bit形式时， 源64-bit寄存器的高32-bit忽略，并且目的寄存器的高32-bit被设置为0。</p>
+<p>没有名称为<strong>W31</strong>或者<strong>X31</strong>的寄存器，根据指令，寄存器31是栈指针或者零寄存器。当用作栈指针时， 称之为SP。当用作零寄存器时，32-bit上下文时称之为<strong>WZR</strong>，64-bit上下文时称之为<strong>XZR</strong>。</p>
+<h2 id="异常等级"><a href="#异常等级" class="headerlink" title="异常等级"></a>异常等级</h2><p>Armv8体系架构定义了4个异常等级， <strong>EL0</strong>到<strong>EL3</strong>， 其中<strong>EL3</strong>是最高异常等级，具有最高执行权限。当进入异常，异常等级可以是提升或者保持不变， 当从异常返回时，异常等级通常是降低或者保持不变。以下是异常等级常用用法模型。</p>
+<p><strong>EL0</strong></p>
+<p>应用级</p>
+<p><strong>EL1</strong></p>
+<p>OS内核以及需要特权功能的相关函数</p>
+<p><strong>EL2</strong></p>
+<p>hypervisor</p>
+<p>何为Hypervisor??<br>一种运行在物理机器和操作系统之间的中间层软件，允许多个操作系统和应用共享硬件。</p>
+<p><strong>EL3</strong></p>
+<p>Secure Monitor</p>
+<p>当进入更高级别异常等级时，执行状态可以保持不变，或者从AArch32状态切到AArch64状态。<br>当返回到低级别异常等级时，执行状态可以保持不变，或者从AArch64状态切到AAarch32状态。</p>
+<p><strong>进入异常或者从异常退出</strong>是执行状态的切换（AArch32与AArch64状态之间的切换）的唯一方法。</p>
+<p>AArch32状态下A32和T32代码之间的切换方式不太可能进行AArch32与AArch64状态之间的切换。</p>
+<p>在ARM进行上电和复位时，处理器进入到最高级别的异常级别，该异常级别的执行状态是实现的属性之一，也可能由配置输入信号决定。<br>对于EL0以外的异常级别，执行状态由一个或者多个控制寄存器配置位决定。这些配置位只能在更高的异常级别中进行设置。对于EL0，执行状态由返回到EL0的异常的一部分。由执行正在返回的异常级别的控制下确定的。</p>
+<h2 id="链接寄存器-Link-registers"><a href="#链接寄存器-Link-registers" class="headerlink" title="链接寄存器(Link registers)"></a>链接寄存器(Link registers)</h2><p>在AArch64状态， 链接寄存器中存储的是调用子例程时的返回地址。如果返回地址存储在堆栈上，那么链接寄存器可以用作通用寄存器， 那么LR映射到寄存器X30。</p>
+<p>另外， LR寄存器和异常链接寄存器（ELR）是不同的，因此不在该寄存器组中。</p>
+<p>有三个异常链接寄存器，<strong>ELR_EL1</strong>、<strong>ELR_EL2</strong>和<strong>ELR_EL3</strong>，它们对应于每个异常级别。当发生异常时，目标异常级别的异常链接寄存器将存储在对该异常的处理完成后要跳转到的返回地址。如果异常来自AArch32状态，则ELR中的前32位都设置为零。异常级别内的子例程调用使用LR来存储来自子例程的返回地址。</p>
+<p>例如: 当异常级别从EL0变为EL1时，返回地址存储在ELR_EL1中。</p>
+<p>当在一个异常级别中，如果又进入了一个相同级别的中断时，则必须确保将ELR寄存器中的值存储在堆栈上，因为当进入同一级别的中断时， ELR寄存器中的值会被新的同级别的中断返回地址覆盖。</p>
+<h2 id="栈指针寄存器"><a href="#栈指针寄存器" class="headerlink" title="栈指针寄存器"></a>栈指针寄存器</h2><p>在AArch64状态时，SP表示64-bit栈指针寄存器。SP_EL0是SP的别名。<strong>不要将SP用作通用寄存器</strong></p>
+<p>在如下指令中， 只使用SP作为操作数</p>
+<ul>
+<li><p>作为加载(load)和存储(store)指令的base寄存器。在这种情况下，在加上任何的偏移量之前， 它必须是4字节对其的，否则会导致堆栈对齐异常。</p>
+</li>
+<li><p>作为算术指令的源寄存器或者目标寄存器，但是它不能作为设置条件标志中的目标寄存器使用。</p>
+</li>
+<li><p>在逻辑指令中，为了对齐</p>
+</li>
+</ul>
+<p>对于三个异常级别，分别有对应的栈指针寄存器 SP_EL1、SP_EL2和SP_EL3。在异常级别中，您可以使用该异常级别的专用堆栈指针，或者使用与EL0关联的堆栈指针SP_EL0。您可以使用<strong>SPSel</strong>寄存器来选择要在异常级别中使用的堆栈指针。</p>
+<p>栈指针的选择由附加到异常级别名称后面的字母t或者字母h表示， 例如EL0t或者EL3h。 t后缀表示异常级别使用SP_EL0, h后缀表示使用SP_ELx， 其中x表示当前异常级别号。EL0总是使用SP_EL0, 因此不需要有h后缀。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>-《ARM Intruction Set Version 1.0 - Reference Guide》 A3.1 ~ A3.4</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoEr</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/12/18/2021-12-18-Overview-of-AArch64-state/">http://example.com/2021/12/18/2021-12-18-Overview-of-AArch64-state/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">XiaoEr</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AArch64/">AArch64</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/19/2021-12-19-CS61C-Great-Ideas-in-Computer-Architecutre-Schedule/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机课程大纲</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/20/2021-11-20-RF-test/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">wlan RF测试指标介绍</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiaoEr</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/w512"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自制力 + 执行力</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AArch64%E7%8A%B6%E6%80%81%E4%B8%8B%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">AArch64状态下寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%AD%89%E7%BA%A7"><span class="toc-number">2.</span> <span class="toc-text">异常等级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%AF%84%E5%AD%98%E5%99%A8-Link-registers"><span class="toc-number">3.</span> <span class="toc-text">链接寄存器(Link registers)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">栈指针寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/19/2021-12-19-CS61C-Number-Representation/" title="Lec1 - 数字表示"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="Lec1 - 数字表示"/></a><div class="content"><a class="title" href="/2021/12/19/2021-12-19-CS61C-Number-Representation/" title="Lec1 - 数字表示">Lec1 - 数字表示</a><time datetime="2021-12-19T13:02:16.000Z" title="发表于 2021-12-19 21:02:16">2021-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/19/2021-12-19-CS61C-Great-Ideas-in-Computer-Architecutre-Schedule/" title="计算机课程大纲"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="计算机课程大纲"/></a><div class="content"><a class="title" href="/2021/12/19/2021-12-19-CS61C-Great-Ideas-in-Computer-Architecutre-Schedule/" title="计算机课程大纲">计算机课程大纲</a><time datetime="2021-12-19T11:55:10.000Z" title="发表于 2021-12-19 19:55:10">2021-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/18/2021-12-18-Overview-of-AArch64-state/" title="AArch64状态概述"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="AArch64状态概述"/></a><div class="content"><a class="title" href="/2021/12/18/2021-12-18-Overview-of-AArch64-state/" title="AArch64状态概述">AArch64状态概述</a><time datetime="2021-12-18T10:16:10.000Z" title="发表于 2021-12-18 18:16:10">2021-12-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/20/2021-11-20-RF-test/" title="wlan RF测试指标介绍"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="wlan RF测试指标介绍"/></a><div class="content"><a class="title" href="/2021/11/20/2021-11-20-RF-test/" title="wlan RF测试指标介绍">wlan RF测试指标介绍</a><time datetime="2021-11-20T09:56:22.000Z" title="发表于 2021-11-20 17:56:22">2021-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/18/2021-11-18-computer-network-lec1/" title="计算机网络第一课"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="计算机网络第一课"/></a><div class="content"><a class="title" href="/2021/11/18/2021-11-18-computer-network-lec1/" title="计算机网络第一课">计算机网络第一课</a><time datetime="2021-11-18T13:51:22.000Z" title="发表于 2021-11-18 21:51:22">2021-11-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By XiaoEr</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

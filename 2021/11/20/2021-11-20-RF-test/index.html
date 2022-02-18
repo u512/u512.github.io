@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>wlan RF测试指标介绍 | XiaoEr</title><meta name="keywords" content="wlan,rf"><meta name="author" content="XiaoEr"><meta name="copyright" content="XiaoEr"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="发送功率发送功率（Transmit Power）：用来衡量RF电路辐射出来的能量强度，也就是我们熟悉的波形-振幅这一参数，能力越大，功率越高，振幅越高。用一个例子来比喻发送功率的概念：两个老头子吵架，看谁的喉咙声带发出的声音（声音也是以波的形式传输，可传播能力）较大，声音（功率）越大，气势越大，传播的距离越远，越容易让人听到。同之，功率也是如此。每个国家对无线电的发送功率都有明确的要求与限制，以保">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wlan RF测试指标介绍">
+<meta property="og:url" content="http://example.com/2021/11/20/2021-11-20-RF-test/index.html">
+<meta property="og:site_name" content="XiaoEr">
+<meta property="og:description" content="发送功率发送功率（Transmit Power）：用来衡量RF电路辐射出来的能量强度，也就是我们熟悉的波形-振幅这一参数，能力越大，功率越高，振幅越高。用一个例子来比喻发送功率的概念：两个老头子吵架，看谁的喉咙声带发出的声音（声音也是以波的形式传输，可传播能力）较大，声音（功率）越大，气势越大，传播的距离越远，越容易让人听到。同之，功率也是如此。每个国家对无线电的发送功率都有明确的要求与限制，以保">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-11-20T09:56:22.000Z">
+<meta property="article:modified_time" content="2022-02-18T14:09:03.383Z">
+<meta property="article:author" content="XiaoEr">
+<meta property="article:tag" content="wlan">
+<meta property="article:tag" content="rf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/20/2021-11-20-RF-test/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'wlan RF测试指标介绍',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-18 22:09:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XiaoEr</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">wlan RF测试指标介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-20T09:56:22.000Z" title="发表于 2021-11-20 17:56:22">2021-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-18T14:09:03.383Z" title="更新于 2022-02-18 22:09:03">2022-02-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/wlan/">wlan</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/wi-fi/">wi-fi</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/802-11/">802.11</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="wlan RF测试指标介绍"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="发送功率"><a href="#发送功率" class="headerlink" title="发送功率"></a>发送功率</h2><p><strong>发送功率（Transmit Power）</strong>：用来衡量RF电路辐射出来的能量强度，也就是我们熟悉的波形-振幅这一参数，能力越大，功率越高，振幅越高。用一个例子来比喻发送功率的概念：两个老头子吵架，看谁的喉咙声带发出的声音（声音也是以波的形式传输，可传播能力）较大，声音（功率）越大，气势越大，传播的距离越远，越容易让人听到。同之，功率也是如此。每个国家对无线电的发送功率都有明确的要求与限制，以保证无线电之间不会造成相互干扰，以免导致受干扰区域间的任何无线设备都无法正常通信。</p>
+<ul>
+<li><p>11b&#x2F;g&#x2F;a、20M带宽11n、40M带宽11n发射功率无统一标准，需根据实际情况灵活应用。可是，<strong>北美最大功率不超过30dBm，中国及欧洲国家最大功率不超过20dBm，日本最大功率不超过22dBm</strong></p>
+</li>
+<li><p>发送功率表征的是待测设备发送无线信号强度的大小，<strong>在满足频谱模版、EVM性能的前提下，功率越大，其性能越好，在实际应用中表现为无线覆盖范围越大</strong></p>
+</li>
+<li><p>测量发送功率可以使用功率计、矢量信号分析仪或IQview&#x2F;nxn</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<p><strong>注意</strong></p>
+<p>802.11协议在不同调制模式、速率下，一般会有对应的功率推荐值，一般按推荐值设置即可，若强行增加功率，往往会影响到频谱模板、EVM性能，如果开发者对无线电没有深入的了解，不建议更改，或者咨询相关无线电专家。</p>
+<h2 id="频谱模板"><a href="#频谱模板" class="headerlink" title="频谱模板"></a>频谱模板</h2><p><strong>发送信号频谱模板（Transmit Spectrum Mask）</strong>：频谱是频率谱密度的简称，是频率的分布曲线。复杂振荡分解为振幅不同和频率不同的谐振荡，这些谐振荡的幅值按频率排列的图形叫做频谱。频谱广泛应用于声学、光学和无线电技术等方面。频谱将对信号的研究从时域引入到频域，从而带来更直观的认识。把复杂的机械振动分解成的频谱称为机械振动谱，把声振动分解成的频谱称为声谱，把光振动分解成的频谱称为光谱，把电磁振动分解成的频谱称为电磁波谱，一般常把光谱包括在电磁波谱的范围之内。分析各种振动的频谱就能了解该复杂振动的许多基本性质，因此频谱分析已经成为分析各种复杂振动的一项基本方法。802.11 标准指定了一个频谱模板，规定了每条信道中允许的功率分配。频谱模板要求信号以指定的频率偏置衰减到特定电平。</p>
+<p>关于频谱模板， 可以参考: <a target="_blank" rel="noopener" href="https://zifeng-bbc.blog.csdn.net/article/details/112915088">无线射频专题《射频合规，2.4GHz WIFI频谱模板》</a></p>
+<p><strong>为什么需要频谱模板？</strong></p>
+<p>原因：<strong>无线频谱模版用来衡量测量发送信号的质量和对相邻信道的干扰抑制能力</strong></p>
+<p>频谱模板的测试方法：</p>
+<p>设备上电状态下，使用长发指令使设备处于发送状态（需要通过配置模式来发送11<br>b, 11g, 11n, 11ac的信号）， 用矢量信号分析仪或IQview&#x2F;nXn观察其波形，<strong>频谱模版在实线以下为合格，在发送功率满足要求的前提下，频谱模版越小且粗实线越远，其性能越好</strong>。</p>
+<h2 id="频谱平坦度"><a href="#频谱平坦度" class="headerlink" title="频谱平坦度"></a>频谱平坦度</h2><p><strong>频谱平坦度(Spectral Flatness)</strong>:<br>频谱平坦度，反应信号子载波的功率变化，它测量每个子载波的平均功率对所有子载波平均功率的偏离。试想一下，如果一个人说话，音量一会儿大一会儿小，听起来是什么感受，接听方耳朵必须频率地适应说话方的音量变化，以至于感觉难受，同样，无线电接收器也是一样，难以适应子载波均值的快速变化，让接收频谱变成不平坦。</p>
+<p>平坦度表征待测信号在其所处信道内，功率平坦的程度，通常用IQview&#x2F;nxn来测量，规范要求与实际测试结果如下图所示：</p>
+<p>要求平坦度测试曲线必须在上图所示的两条红线的范围之内，频谱平坦度的平坦与否影响无线信号的连接性能（就像人耳传声的例子）</p>
+<h2 id="频率误差"><a href="#频率误差" class="headerlink" title="频率误差"></a>频率误差</h2><p><strong>频率误差（Frequency Error）</strong>：表征射频信号偏离该信号所处信道中心频率的大小，通常以IQview&#x2F;nxn或矢量信号分析仪来测量，单位为ppm，每百万单位（parts per million），而频率以赫兹为单位，ppm和赫兹之间的换算关系如下式：</p>
+<p>$$<br>Df &#x3D; (f * ppm) &#x2F; (10 ^ 6)<br>$$</p>
+<p>这里$ppm$是最大变化值（+&#x2F;-），$f$是中心频率（赫兹，Hz），$Df$是允许最大的频率变化范围。</p>
+<p>假如100MHz的频率允许的100 ppm的频率误差。利用上面公式得出频率的变化是10kHz。那么系统的最大频率是100.01MHz，最小是99.99 MHz</p>
+<p>例如：</p>
+<p><strong>Freq Err</strong>：12kHz；<br><strong>carrier frequency</strong>：2.412GHz；<br>那么<br>$(2412000000(Hz) * x(ppm)) &#x2F; (10 ^ 6) &#x3D;12000(Hz)$，计算得出频偏值$4.98ppm$</p>
+<p><strong>2.4GHz WiFi测试频率误差要求：＜±25ppm （802.11b）； ＜±20ppm （802.11g&#x2F;a&#x2F;n）</strong></p>
+<p><strong>频偏越小越好</strong>，在实际的硬件电路设计中，晶振性能的一致性影响WIFI产品频率误差的一致性，在晶振的选型上，要将性能与成本做折中考虑（一致性、稳定度，例如不容易受温度影响）</p>
+<ul>
+<li><p>建议尽量选择一致性较好的晶振，当然成本也会更高</p>
+</li>
+<li><p>由事物客观存在定理得出：晶体供应商必然是不能100%保证晶体一致性，总会有误差存在，甚至是不良品，产能测试过程中需要通过科学的测试方法，准确筛选出不合格产品，以免流出市场，造成设备通讯异常与干扰</p>
+</li>
+<li><p>使用精密仪器来做频偏校准，是确保频偏误差一致性最好的方法（当然成本也较高，包括仪器成本、生产流程成本）</p>
+</li>
+<li><p>使用精密仪器来做频偏校准的必要条件：屏蔽房、屏蔽箱（校准过程中，若受周围无线电环境干扰，往往会出现误校准的情况，使得校准后的频偏误差更大）</p>
+</li>
+</ul>
+<p>产生频偏还能正常通讯吗？</p>
+<ul>
+<li><p>在误差范围内影响不大，可以正常通讯</p>
+</li>
+<li><p>双向正偏等值、双向负偏等值情况下，可以正常通讯（就是说通讯双方都往一个方向的频率偏移，而且偏移值相差不多的情况下）</p>
+</li>
+</ul>
+<h2 id="误差矢量幅度"><a href="#误差矢量幅度" class="headerlink" title="误差矢量幅度"></a>误差矢量幅度</h2><p><strong>误差矢量幅度（Error Vector Magnitude）</strong>：误差矢量（包括幅度和相位的矢量）是在一个给定时刻理想无误差基准信号与实际发射信号的向量差，能全面衡量调制信号的幅度误差和相位误差。</p>
+<ul>
+<li><p>EVM具体表示发射机对信号进行<strong>解调时产生的IQ分量与理想信号分量的接近程度，是考量调制信号质量的一种指标</strong>。 误差向量通常与QPSK等M-ary I&#x2F;Q调制方案有关，且常以解调符号的I&#x2F;Q星状图表示。</p>
+</li>
+<li><p>误差向量幅度[EVM]定义为误差矢量信号平均功率的均方根值与理想信号平均功率的均方根值之比，并以百分比的形式表示。<strong>EVM越小，信号质量越好</strong>。</p>
+</li>
+<li><p>误差矢量幅度是实际测量到的波形和理论调制波形之间的偏差。两个波形都通过带宽1.28MHz，滚降系数α&#x3D;0.22的根升余弦匹配滤波器。两个波形再进一步通过选择频率、绝对相位、绝对幅度及码片时钟定时进行调制，以使误差矢量最小。EVM定义为误差矢量平均功率与参考信号平均功率之比的平方根，用百分数表示。测量间隔为一个时隙。</p>
+</li>
+</ul>
+<p><strong>遗留问题：</strong> 如何通过数学计算公式计算EVM？</p>
+<h2 id="接收灵敏度"><a href="#接收灵敏度" class="headerlink" title="接收灵敏度"></a>接收灵敏度</h2><p>接收灵敏度（Receiver Sensitivity）</p>
+<p>接收灵敏度是表征待测设备接收性能的一个参数，接收灵敏度越好，其接收到的有用信号就越多，其无线覆盖范围越大（功率衡量的是能不能听到，接收灵敏度衡量的是能不能仔细听清楚）</p>
+<p>接收灵敏度可以用IQview&#x2F;nxn来测量，在测量接收灵敏度时，要使待测设备处于接收状态，用IQview&#x2F;nxn的信号发生器发送特定的包文件，在IQview&#x2F;nxn操作软件上更改信号输出功率，直到PER（%）（误包率）满足规范规定的要求</p>
+<ul>
+<li>11b PER:8%，psdu length ：1024bytes</li>
+<li>11g&#x2F;11a PER:10%，psdu length：1000bytes</li>
+<li>11n PER:10%，psdu length ：4096bytes</li>
+</ul>
+<p>接收灵敏度为IQview&#x2F;nxn上的信号输出功率与IQview&#x2F;nxn和待测件之间的cable、衰减器、DC Block等总的衰减值之差。接收灵敏度应满足如下要求：</p>
+<h2 id="最大接收电平"><a href="#最大接收电平" class="headerlink" title="最大接收电平"></a>最大接收电平</h2><p>最大接收电平（Receiver Maximum Input Level）表征WIFI产品接收性能的另外一个参数，在接收灵敏度一定的情况下，接收最大电平越高表示WIFI产品的动态范围越大</p>
+<h2 id="邻道抑制"><a href="#邻道抑制" class="headerlink" title="邻道抑制"></a>邻道抑制</h2><p>干扰信号输出功率与主信号输出功率差值为邻道抑制（干扰信号输出功率 - 主信号输出功率），仪器测试原理如下：</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fengfeng0328/article/details/112915133">无线射频专题《射频合规，2.4GHz WIFI测试指标详解》</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/446198529_100011934">射频 | 常见射频指标参数详解</a></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoEr</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/20/2021-11-20-RF-test/">http://example.com/2021/11/20/2021-11-20-RF-test/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">XiaoEr</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/wlan/">wlan</a><a class="post-meta__tags" href="/tags/rf/">rf</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/18/2021-12-18-Overview-of-AArch64-state/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AArch64状态概述</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/18/2021-11-18-computer-network-lec1/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络第一课</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiaoEr</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/w512"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自制力 + 执行力</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%8A%9F%E7%8E%87"><span class="toc-number">1.</span> <span class="toc-text">发送功率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E8%B0%B1%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.</span> <span class="toc-text">频谱模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E8%B0%B1%E5%B9%B3%E5%9D%A6%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">频谱平坦度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E8%AF%AF%E5%B7%AE"><span class="toc-number">4.</span> <span class="toc-text">频率误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E7%9F%A2%E9%87%8F%E5%B9%85%E5%BA%A6"><span class="toc-number">5.</span> <span class="toc-text">误差矢量幅度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%81%B5%E6%95%8F%E5%BA%A6"><span class="toc-number">6.</span> <span class="toc-text">接收灵敏度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E6%8E%A5%E6%94%B6%E7%94%B5%E5%B9%B3"><span class="toc-number">7.</span> <span class="toc-text">最大接收电平</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%BB%E9%81%93%E6%8A%91%E5%88%B6"><span class="toc-number">8.</span> <span class="toc-text">邻道抑制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/19/2021-12-19-CS61C-Number-Representation/" title="Lec1 - 数字表示"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="Lec1 - 数字表示"/></a><div class="content"><a class="title" href="/2021/12/19/2021-12-19-CS61C-Number-Representation/" title="Lec1 - 数字表示">Lec1 - 数字表示</a><time datetime="2021-12-19T13:02:16.000Z" title="发表于 2021-12-19 21:02:16">2021-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/19/2021-12-19-CS61C-Great-Ideas-in-Computer-Architecutre-Schedule/" title="计算机课程大纲"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="计算机课程大纲"/></a><div class="content"><a class="title" href="/2021/12/19/2021-12-19-CS61C-Great-Ideas-in-Computer-Architecutre-Schedule/" title="计算机课程大纲">计算机课程大纲</a><time datetime="2021-12-19T11:55:10.000Z" title="发表于 2021-12-19 19:55:10">2021-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/18/2021-12-18-Overview-of-AArch64-state/" title="AArch64状态概述"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="AArch64状态概述"/></a><div class="content"><a class="title" href="/2021/12/18/2021-12-18-Overview-of-AArch64-state/" title="AArch64状态概述">AArch64状态概述</a><time datetime="2021-12-18T10:16:10.000Z" title="发表于 2021-12-18 18:16:10">2021-12-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/20/2021-11-20-RF-test/" title="wlan RF测试指标介绍"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="wlan RF测试指标介绍"/></a><div class="content"><a class="title" href="/2021/11/20/2021-11-20-RF-test/" title="wlan RF测试指标介绍">wlan RF测试指标介绍</a><time datetime="2021-11-20T09:56:22.000Z" title="发表于 2021-11-20 17:56:22">2021-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/18/2021-11-18-computer-network-lec1/" title="计算机网络第一课"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg'" alt="计算机网络第一课"/></a><div class="content"><a class="title" href="/2021/11/18/2021-11-18-computer-network-lec1/" title="计算机网络第一课">计算机网络第一课</a><time datetime="2021-11-18T13:51:22.000Z" title="发表于 2021-11-18 21:51:22">2021-11-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By XiaoEr</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
